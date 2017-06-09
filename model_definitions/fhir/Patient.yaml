@@ -1,0 +1,16 @@
+Patient:
+  properties:
+    identifier: {$ref: Identifier}
+    active: {type: boolean}
+    name: {type: string}
+    telecom: {type: string}
+    gender: {type: string}
+    birthDate: {type: string, format: date-time}
+    deceased: {type: boolean}
+    address: {$ref: Address}
+    maritalStatus: {$ref: MartialStatus}
+    multipleBirth: {type: boolean}
+    photo: {type: string, format: byte}
+    generalPractitioner: {$ref: Practitioner}
+    managingOrganization: {$ref: Organization}
+  type: object

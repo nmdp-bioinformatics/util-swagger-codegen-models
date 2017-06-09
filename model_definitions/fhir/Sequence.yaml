@@ -1,0 +1,18 @@
+Specimen:
+  properties:
+    identifier: {$ref: Identifier}
+    type: {$ref: Code}
+    coordinateSystem: {type: integer, format: int32}
+    patient: {$ref: Patient}
+    specimen: {$ref: Specimen}
+    device: {$ref: Device}
+    performer: {$ref: Organization}
+    quantity: {type: integer, format: int32}
+    referenceSeq: {$ref: BackboneElement}
+    variant: {$ref: Variant}
+    observedSeq: {type: string}
+    quality: {$ref: Quality}
+    readCoverage: {type: integer, fomrat: int32}
+    repository: {$ref: Repository}
+    pointer: {$ref: Sequence}
+  type: object

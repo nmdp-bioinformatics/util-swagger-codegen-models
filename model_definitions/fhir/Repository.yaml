@@ -1,0 +1,9 @@
+Repository:
+  properties:
+    type: {$ref: Type}
+    uri: {type: string}
+    name: {type: string}
+    datasetId: {type: string}
+    variantsetId: {type: string}
+    readsetId: {type: string}
+  type: object

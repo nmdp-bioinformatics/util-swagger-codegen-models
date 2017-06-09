@@ -1,0 +1,4 @@
+Code:
+  propeties:
+    name: {type: string}
+  type: object

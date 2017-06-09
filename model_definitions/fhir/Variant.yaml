@@ -1,0 +1,9 @@
+Variant:
+  properties:
+    start: {type: integer, format: int32}
+    end: {type: integer, format: int32}
+    observedAllele: {type: string}
+    referenceAllele: {type: string}
+    cigar: {type: string}
+    variantPointer: {$ref: Observation}
+  type: object

@@ -1,0 +1,17 @@
+Quality:
+  properties:
+    code: {$ref: Type}
+    standardSequence: {$ref Sequence}
+    start: {type: integer, format: int32}
+    end: {type: integer, format: int32}
+    score: {$ref: Score}
+    method: {$ref: Method}
+    truthTP: {type: number}
+    queryTP: {type: number}
+    truthFN: {type: number}
+    queryFP: {type: number}
+    gtFP: {type: number}
+    precision: {type: number}
+    recall: {type: number}
+    fScore: {type: number}
+  type: object

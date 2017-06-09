@@ -1,0 +1,5 @@
+Identifier:
+  properties:
+    system: {type: string}
+    value: {type: string}
+  type: object

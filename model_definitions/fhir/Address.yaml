@@ -1,0 +1,10 @@
+Address:
+  properties:
+    street1: {type: string}
+    street2: {type: string}
+    street3: {type: string}
+    zip: {type: integer, format: int32}
+    state: {type: string}
+    city: {type: string}
+    country: {type: string}
+  type: object

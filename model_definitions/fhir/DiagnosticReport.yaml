@@ -1,0 +1,4 @@
+DiagnosticReport:
+  allOf:
+  - $ref: Observation
+  - type: object

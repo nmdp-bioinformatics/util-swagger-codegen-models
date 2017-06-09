@@ -1,0 +1,7 @@
+AlleleName:
+  allOf:
+  - $ref: '#/definitions/StructureDefinition'
+  - type: object
+    properties:
+      allele:
+          type: string

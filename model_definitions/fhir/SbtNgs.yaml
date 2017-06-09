@@ -1,0 +1,6 @@
+SbtNgs:
+  allOf:
+  - $ref: '#/definitions/Observation'
+  - type: object
+    properties:
+      locus: {type: string}

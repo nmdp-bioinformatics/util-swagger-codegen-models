@@ -1,0 +1,4 @@
+Type:
+  properties:
+    specimenType: {type: string}
+  type: object

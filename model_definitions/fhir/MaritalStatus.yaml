@@ -1,0 +1,9 @@
+MaritalStatus:
+  type: string
+  enum:
+    - DIVORCED
+    - WIDOWED
+    - MARRIED
+    - SINGLE
+    - OTHER
+    - SEPARATED

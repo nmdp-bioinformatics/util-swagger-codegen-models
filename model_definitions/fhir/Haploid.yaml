@@ -1,0 +1,8 @@
+Haploid:
+  allOf:
+  - $ref: '#/definitions/StructureDefinition'
+  - type: object
+    properties:
+      locus: {type: string}
+      method: {type: string}
+      haploidType: {type: string}

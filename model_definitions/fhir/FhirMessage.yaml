@@ -1,0 +1,19 @@
+FhirMessage:
+  properties:
+    alleleDatabases: {$ref: AlleleDatabases}
+    alleleNames: {$ref: AlleleNames}
+    diagnosticReport: {$ref: DiagnosticReport}
+    geneticsPhaseSets: {$ref: GeneticsPhaseSets}
+    genotypingResultsHaploids: {$ref: GenotypingResultsHaploids}
+    genotypingResultsMethods: {$ref: GenotypingResultsMethods}
+    glstrings: {$ref: Glstrings}
+    haploids: {$ref: Haploids}
+    observations: {$ref: Observations}
+    patient: {$ref: Patient}
+    sbtNgss: {$ref: SbtNgss}
+    sequences: {$ref: Sequences}
+    specimens: {$ref: Specimens}
+    ssos: {$ref: Ssos}
+    ssps: {$ref: Ssps}
+    id: {type: string}
+  type: object

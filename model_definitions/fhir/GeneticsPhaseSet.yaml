@@ -1,0 +1,7 @@
+GeneticsPhaseSet:
+  allOf:
+  - $ref: '#/definitions/Observation'
+  - type: object
+    properties:
+      phasingGroup: {type: string}
+      phaseSet: {type: string}

@@ -1,0 +1,4 @@
+ReferenceSequence:
+  properties:
+    identifier: {$ref: Identifier}
+  type: object

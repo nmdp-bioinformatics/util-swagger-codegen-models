@@ -1,0 +1,4 @@
+Organization:
+  properties:
+    identifier: {$ref: Identifier}
+  type: object

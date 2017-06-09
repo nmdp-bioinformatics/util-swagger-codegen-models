@@ -1,0 +1,12 @@
+Specimen: 
+  properties:
+    identifier: {$ref: Identifier}
+    collection: {$ref: Collection}
+    accessionIdentifier: {type: string}
+    status: {$ref: Status}
+    receivedTime: {type: string, format: date-time}
+    parent: {$ref: Specimen}
+    request: {$ref: Request}
+    note: {type: string}
+    type: {$ref: Type}
+  type: object

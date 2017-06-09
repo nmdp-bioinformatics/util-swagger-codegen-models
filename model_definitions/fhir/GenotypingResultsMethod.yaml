@@ -1,0 +1,7 @@
+GenotypingResultsMethod:
+  allOf:
+  - $ref: '#/definitions/StructureDefinition'
+  - type: object
+    properties:
+      testId: {type: string}
+      testIdSource: {type: string}

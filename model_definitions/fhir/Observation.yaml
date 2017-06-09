@@ -1,0 +1,21 @@
+Observation:
+  properties:
+    identifier: {$ref: Identifier}
+    basedOn: {$ref: Reference}
+    status: {$ref: Status}
+    category: {$ref: Category}
+    code: {$ref: Code}
+    subject: {type: string}
+    context: {type: string}
+    effective: {type: string, format: date-time}
+    issued: {type: string, format: date-time}
+    performer: {$ref: Practitioner}
+    value: {type: object}
+    dataAbsentReason: {type: object}
+    interpretation: {type: object}
+    comment: {type: string}
+    bodySite: {type: object}
+    method: {type: object}
+    specimen: {$ref: Specimen}
+    device: {$ref: Device}
+  type: object

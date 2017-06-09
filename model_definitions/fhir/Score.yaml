@@ -1,0 +1,4 @@
+Score:
+  properties:
+    value: {type: string}
+  type: object

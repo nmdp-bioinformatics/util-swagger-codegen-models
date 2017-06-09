@@ -1,0 +1,4 @@
+Collection:
+  properties:
+    method: {type: string}
+    bodySize: {type: string}

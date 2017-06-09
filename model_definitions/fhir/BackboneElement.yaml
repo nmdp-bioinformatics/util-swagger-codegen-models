@@ -1,0 +1,10 @@
+BackboneElement:
+  properties:
+    chromosome: {$ref: Chromosome}
+    genomeBuild: {type: string}
+    referenceSequenceId: {$ref: ReferenceSequence} 
+    referenceSeqPointer: {$ref: Sequence} 
+    referenceSeqString: {type: string}
+    strand: {type: integer, format: int32 }
+    windowStart: {type: integer, format: int32}
+    windowEnd: {type: integer, format: int32}

@@ -1,0 +1,28 @@
+StructureDefinition:
+  properties:
+    url: {type: string, format: url}
+    identifier: {type: string}
+    version: {type: string}
+    name: {type: string}
+    title: {type: string}
+    status: {type: string}
+    experimental: {type: boolean}
+    date: {type: string, format: date-time}
+    publisher: {type: string}
+    contact: {$ref: Contact}
+    description: {type: string}
+    useContext: {$ref: UsageContext}
+    jurisdiction: {$ref: Jurisdiction}
+    purpose: {type: string}
+    copyright: {type: string}
+    keyword: {type: string}
+    fhirVersion: {type: string}
+    kind: {$ref: StructureDefinitionKind}
+    abstracted: {type: boolean}
+    contextType: {$ref: ExtensionContext}
+    context: {type: string}
+    contextVariant: {type: string}
+    type: {$ref: FhirDefinedType}
+    baseDefinition: {type: string, format: url}
+    derivation: {$ref: TypeDerivationRule}
+  type: object

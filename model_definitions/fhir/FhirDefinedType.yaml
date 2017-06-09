@@ -1,0 +1,6 @@
+FhirDefinedType:
+  properties:
+    locus: {type: string}
+    fhirType: {type: string}
+    method: {type: string}
+  type: object

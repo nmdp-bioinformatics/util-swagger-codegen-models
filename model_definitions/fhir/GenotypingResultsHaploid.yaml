@@ -1,0 +1,4 @@
+GenotypingResultsHaploid:
+  allOf:
+  - $ref: '#/definitions/StructureDefinition'
+  - type: object

@@ -1,0 +1,7 @@
+Glstring:
+  allOf:
+  - $ref: '#/definitions/StructureDefinition'
+  - type: object
+    properties:
+      uri: {type: string}
+      value: {type: string}
