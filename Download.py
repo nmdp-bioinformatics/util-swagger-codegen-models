@@ -44,8 +44,48 @@ def download_directory(repository, sha, server_path, template_files):
             except (GithubException, IOError) as exc:
                 sys.stderr.write('Error processing %s: %s', content.path, exc)
 
+
+def write_swagger_spec_file(directory, swagger_file_name, repo, sha, output_directory, swagger_template_path, swagger_paths_directory):
+    template_files = []
+    output_path = os.path.join(output_directory, swagger_file_name)
+    download_directory(repo, sha, 'model_definitions/%s' % directory, template_files)
+    definitions_yaml = 'models:\n'
+    paths_yaml = 'paths:\n'
+    file_header = ''
+
+    for str_file in template_files:
+        for line in str_file.split('\n'):
+            if line and not line.isspace():
+                definitions_yaml += '  ' + line + '\n'
+
+    definitions_yaml += '\n\r'
+
+    with open(swagger_template_path, 'r') as reader:
+        swagger_template = reader.read()
+
+    for line in swagger_template.split('\n'):
+        if line and not line.isspace():
+            file_header += line + '\n'
+
+    for (dirpath, dirnames, filenames) in walk(os.path.join(swagger_paths_directory, directory)):
+        for f in filenames:
+            with open(os.path.join(dirpath, f)) as path_reader:
+                path = path_reader.read()
+
+                for line in path.split('\n'):
+                    if line and not line.isspace():
+                        paths_yaml += '  ' + line + '\n'
+
+    with open(output_path, 'w') as writer:
+        writer.write(swagger_template + '\n')
+        writer.write(paths_yaml + '\n')
+        writer.write(definitions_yaml + '\n')
+
+    sys.stdout.write('Successfully created %s\n' % swagger_file_name)
+
 # user_name = raw_input("Github username? ")
 # password = raw_input("Github password? ")
+# branch = raw_input("Branch to download? ")
 
 sys.stdout.write('Begin compiling swagger-spec.yaml')
 
@@ -55,49 +95,13 @@ branch = argv[3]
 output_directory = r'%s' % argv[4]
 swagger_paths_directory = r'%s' % argv[5]
 swagger_template_path = r'%s' % argv[6]
+
 github = Github(user_name, password)
 repository_name = "util-swagger-codegen-models"
 organization = github.get_user().get_orgs()[0]
 repo = organization.get_repo(repository_name)
-
-# branch = raw_input("Branch to download? ")
-
 sha = get_sha_for_tag(repo, branch)
-template_files = []
-download_directory(repo, sha, 'model_definitions', template_files)
-definitions_yaml = 'models:\n'
-paths_yaml = 'paths:\n'
-file_header = ''
 
-sys.stdout.write('Composing swagger-spec.yaml with ' + str(len(template_files)) + ' models.')
 
-for str_file in template_files:
-    for line in str_file.split('\n'):
-        if line and not line.isspace():
-            definitions_yaml += '  ' + line + '\n'
-
-definitions_yaml += '\n\r'
-sys.stdout.write('swagger-spec.yaml definitions view:\n' + definitions_yaml)
-
-with open(swagger_template_path, 'r') as reader:
-    swagger_template = reader.read()
-
-for line in swagger_template.split('\n'):
-    if line and not line.isspace():
-        file_header += line + '\n'
-
-for (dirpath, dirnames, filenames) in walk(swagger_paths_directory):
-    for f in filenames:
-        with open(os.path.join(dirpath, f)) as path_reader:
-            path = path_reader.read()
-
-            for line in path.split('\n'):
-                if line and not line.isspace():
-                    paths_yaml += '  ' + line + '\n'
-
-with open(output_directory, 'w') as writer:
-    writer.write(swagger_template + '\n')
-    writer.write(paths_yaml + '\n')
-    writer.write(definitions_yaml + '\n')
-
-sys.stdout.write('Successfully created swagger-spec.yaml\n')
+write_swagger_spec_file('hml', 'swagger-spec.hml.yaml', repo, sha, output_directory, swagger_template_path, swagger_paths_directory)
+write_swagger_spec_file('fhir', 'swagger-spec.fhir.yaml', repo, sha, output_directory, swagger_template_path, swagger_paths_directory)

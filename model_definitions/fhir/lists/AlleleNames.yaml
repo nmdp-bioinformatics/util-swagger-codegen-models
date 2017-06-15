@@ -1,4 +1,4 @@
 AlleleNames:
   properties:
-    alleleDatanames: {type: array, items: $ref: '/definitions/AlleleNames'}
+    alleleNames: {type: array, items: $ref: AlleleNames}
   type: object
