@@ -6,16 +6,9 @@ AlleleAssignment:
     date: {description: date of assignment, format: date-time, type: string}
     dateCreated: {description: Creation date, format: date-time, type: string}
     dateUpdated: {description: Date updated, format: date-time, type: string}
-    genotypes:
-      items: {$ref: '#/definitions/Genotype'}
-      type: array
+    genotypes: {items: {$ref: '#/definitions/Genotype'}, type: array}
     glString: {$ref: GlString}
-    haploid:{
-      items: $ref: '#/definitions/Haploid'
-      type: array
+    haploid:{items: {$ref: '#/definitions/Haploid'}, type: array }
     id: {description: Id of the typing, type: string}
-    properties:
-      description: Properteis belonging to this item
-      items: {$ref: '#/definitions/Property'}
-      type: array
+    properties: {description: Properteis belonging to this item, items: {$ref: '#/definitions/Property'}, type: array}
   type: object
