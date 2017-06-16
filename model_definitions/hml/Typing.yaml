@@ -16,5 +16,5 @@ Typing:
       type: array
     typingMethod: {$ref: TypingMethod, description: method used to determine typing}
     referenceDatabase: {$ref: ReferenceDatabase, description: database containing sequence}
-    consensuSequence: {$ref: ConsensusSequence}
+    consensusSequence: {$ref: ConsensusSequence}
   type: object
