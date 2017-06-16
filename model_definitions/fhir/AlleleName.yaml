@@ -3,5 +3,4 @@ AlleleName:
   - $ref: '#/definitions/StructureDefinition'
   - type: object
     properties:
-      allele:
-          type: string
+      allele: { type: string }
