@@ -1,5 +1,5 @@
 RawRead:
-  properies:
+  properties:
     active: {description: Active record, type: boolean}
     adapterTrimmed: {description: adapter was trimmed, type: boolean}
     availability: {description: availability of reads, type: string}
