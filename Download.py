@@ -45,11 +45,11 @@ def download_directory(repository, sha, server_path, template_files):
                 sys.stderr.write('Error processing %s: %s', content.path, exc)
 
 
-def write_swagger_spec_file(directory, swagger_file_name, repo, sha, output_directory, swagger_template_path, swagger_paths_directory):
+def write_swagger_spec_file(directory, swagger_file_name, repo, sha, output_directory, swagger_template_path, swagger_paths_directory, dto_property_name):
     template_files = []
     output_path = os.path.join(output_directory, swagger_file_name)
     download_directory(repo, sha, 'model_definitions/%s' % directory, template_files)
-    definitions_yaml = 'definitions:\n'
+    definitions_yaml = '%s:\n' % dto_property_name
     paths_yaml = 'paths:\n'
     file_header = ''
 
@@ -95,6 +95,7 @@ branch = argv[3]
 output_directory = r'%s' % argv[4]
 swagger_paths_directory = r'%s' % argv[5]
 swagger_template_path = r'%s' % argv[6]
+dto_property_name = argv[7]
 
 github = Github(user_name, password)
 repository_name = "util-swagger-codegen-models"
@@ -103,5 +104,5 @@ repo = organization.get_repo(repository_name)
 sha = get_sha_for_tag(repo, branch)
 
 
-write_swagger_spec_file('hml', 'swagger-spec.hml.yaml', repo, sha, output_directory, swagger_template_path, swagger_paths_directory)
-write_swagger_spec_file('fhir', 'swagger-spec.fhir.yaml', repo, sha, output_directory, swagger_template_path, swagger_paths_directory)
+write_swagger_spec_file('hml', 'swagger-spec.hml.yaml', repo, sha, output_directory, swagger_template_path, swagger_paths_directory, dto_property_name)
+write_swagger_spec_file('fhir', 'swagger-spec.fhir.yaml', repo, sha, output_directory, swagger_template_path, swagger_paths_directory, dto_property_name)
