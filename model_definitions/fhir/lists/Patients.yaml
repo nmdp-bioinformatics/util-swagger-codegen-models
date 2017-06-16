@@ -1,0 +1,4 @@
+Patients:
+  properties:
+    patients: {type: array, items: {$ref: '#/definitions/Patient'}}
+  type: object
