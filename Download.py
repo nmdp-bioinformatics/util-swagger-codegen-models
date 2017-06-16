@@ -49,7 +49,7 @@ def write_swagger_spec_file(directory, swagger_file_name, repo, sha, output_dire
     template_files = []
     output_path = os.path.join(output_directory, swagger_file_name)
     download_directory(repo, sha, 'model_definitions/%s' % directory, template_files)
-    definitions_yaml = 'models:\n'
+    definitions_yaml = 'definitions:\n'
     paths_yaml = 'paths:\n'
     file_header = ''
 
