@@ -8,7 +8,7 @@ Patient:
     birthDate: {type: string, format: date-time}
     deceased: {type: boolean}
     address: {$ref: Address}
-    maritalStatus: {$ref: MartialStatus}
+    maritalStatus: {$ref: MaritalStatus}
     multipleBirth: {type: boolean}
     photo: {type: string, format: byte}
     generalPractitioner: {$ref: Practitioner}
