@@ -1,0 +1,4 @@
+Specimens:
+  properties:
+    specimens: {type: array, items: {$ref: '#/definitions/Specimen'}}
+  type: object

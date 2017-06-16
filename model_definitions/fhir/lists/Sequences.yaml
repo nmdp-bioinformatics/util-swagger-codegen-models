@@ -1,0 +1,4 @@
+Sequences:
+  properties:
+    sequences: {type: array, items: {$ref: '#/definitions/Sequence'}}
+  type: object

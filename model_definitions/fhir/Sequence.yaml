@@ -1,4 +1,4 @@
-Specimen:
+Sequence:
   properties:
     identifier: {$ref: Identifier}
     type: {$ref: Code}

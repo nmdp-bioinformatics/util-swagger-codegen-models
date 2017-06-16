@@ -1,0 +1,4 @@
+Haploids:
+  properties:
+    haploids: {type: array, items: {$ref: '#/definitions/haploid'}}
+  type: object

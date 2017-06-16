@@ -13,4 +13,6 @@ Patient:
     photo: {type: string, format: byte}
     generalPractitioner: {$ref: Practitioner}
     managingOrganization: {$ref: Organization}
+    specimens: {$ref: Specimens}
+    diagnosticReport: {$ref: DiagnosticReport}
   type: object

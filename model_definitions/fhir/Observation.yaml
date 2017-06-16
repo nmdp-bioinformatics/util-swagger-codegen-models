@@ -18,4 +18,14 @@ Observation:
     method: {type: object}
     specimen: {$ref: Specimen}
     device: {$ref: Device}
+    diagnosticReport: {$ref: DiagnosticReport}
+    glstrings: {$ref: Glstrings}
+    haploids: {$ref: Haploids}
+    geneticsAlleleName: {type: string}
+    geneticsGene: {type: string}
+    sbtNgss: {$ref: SbtNgss}
+    sequences: {$ref: Sequences}
+    geneticsPhaseSet: {$ref: GeneticsPhaseSet}
+    gentoypingResultsMethod: {$ref: GenotypingResultsMethod}
+    genotypingResultsHaploids: {$ref: GenotypingResultsHaploids}
   type: object

@@ -9,4 +9,5 @@ Specimen:
     request: {$ref: Request}
     note: {type: string}
     type: {$ref: Type}
+    observations: {$ref: Observations}
   type: object

@@ -1,0 +1,4 @@
+Ssps:
+  properties:
+    ssps: {type: array, items: {$ref: '#/definitions/Ssp'}}
+  type: object

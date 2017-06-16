@@ -1,0 +1,4 @@
+Observations:
+  properties:
+    observations: {type: array, items: {$ref: '#/definitions/Observation'}}
+  type: object

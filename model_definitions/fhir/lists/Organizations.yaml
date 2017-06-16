@@ -1,0 +1,4 @@
+Organizations:
+  properties:
+    organizations: {type: array, items: {$ref: '#/definitions/Organization'}}
+  type: object

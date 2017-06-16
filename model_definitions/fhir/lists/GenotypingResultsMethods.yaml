@@ -1,0 +1,4 @@
+GenotypingResultsMethods:
+  properties:
+    genotypingResultsMethods: {type: array, items: {$ref: '#/definitions/GenotypingResultsMethod'}}
+  type: object

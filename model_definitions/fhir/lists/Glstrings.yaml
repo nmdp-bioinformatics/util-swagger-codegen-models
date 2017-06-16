@@ -1,0 +1,4 @@
+Glstrings:
+  properties:
+    glstrings: {type: array, items: {$ref: '#/definitions/Glstring'}}
+  type: object

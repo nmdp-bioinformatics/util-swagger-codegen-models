@@ -1,0 +1,4 @@
+Ssos:
+  properties:
+    ssos: {type: array, items: {$ref: '#/definitions/Sso'}}
+  type: object

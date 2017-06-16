@@ -1,0 +1,4 @@
+GeneticsPhaseSets:
+  properties:
+    geneticsPhaseSets: {type: array, items: {$ref: '#/definitions/GeneticsPhaseSet'}}
+  type: object

@@ -1,0 +1,4 @@
+GenotypingResultsHaploids:
+  properties:
+    genotypingResultsHaploids: {type: array, items: {$ref: '#/definitions/GenotypingResultsHaploid'}}
+  type: object

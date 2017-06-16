@@ -1,0 +1,4 @@
+SbtNgss:
+  properties:
+    sbtNgss: {type: array, items: {$ref: '#/definitions/SbtNgs'}}
+  type: object
