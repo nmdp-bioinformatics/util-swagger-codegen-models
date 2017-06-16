@@ -1,5 +1,5 @@
 ConsensusSequence:
-  properites:
+  properties:
     active: {description: Active record, type: boolean}
     consensusSequenceBlocks:
       type: array
