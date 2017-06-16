@@ -3,7 +3,7 @@ BackboneElement:
     chromosome: {$ref: Chromosome}
     genomeBuild: {type: string}
     referenceSequenceId: {$ref: ReferenceSequence} 
-    referenceSeqPointer: {$ref: Sequence} 
+    referenceSeqPointer: {$ref: '#/definitions/Sequence'}
     referenceSeqString: {type: string}
     strand: {type: integer, format: int32 }
     windowStart: {type: integer, format: int32}
