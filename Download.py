@@ -8,6 +8,7 @@ from os import walk
 import os
 import sys
 
+import pdb
 
 def get_sha_for_tag(repository, tag):
     branches = repository.get_branches()
@@ -45,7 +46,7 @@ def download_directory(repository, sha, server_path, template_files):
                 sys.stderr.write('Error processing %s: %s', content.path, exc)
 
 
-def write_swagger_spec_file(directory, swagger_file_name, repo, sha, output_directory, swagger_template_path, swagger_paths_directory, dto_property_name, models_path):
+def write_swagger_spec_file(directory, swagger_file_name):
     template_files = []
     output_path = os.path.join(output_directory, swagger_file_name)
     definitions_yaml = '%s:\n' % dto_property_name
@@ -87,10 +88,6 @@ def write_swagger_spec_file(directory, swagger_file_name, repo, sha, output_dire
 
     sys.stdout.write('Successfully created %s\n' % swagger_file_name)
 
-# user_name = raw_input("Github username? ")
-# password = raw_input("Github password? ")
-# branch = raw_input("Branch to download? ")
-
 sys.stdout.write('Begin compiling swagger-spec.yaml')
 
 user_name = argv[1]
@@ -102,6 +99,8 @@ swagger_template_path = r'%s' % argv[6]
 dto_property_name = argv[7]
 models_path = None
 
+pdb.set_trace()
+
 if len(argv) >= 9:
     models_path = r'%s' % argv[8]
 
@@ -111,6 +110,5 @@ organization = github.get_user().get_orgs()[0]
 repo = organization.get_repo(repository_name)
 sha = get_sha_for_tag(repo, branch)
 
-
-write_swagger_spec_file('hml', 'swagger-spec.hml.yaml', repo, sha, output_directory, swagger_template_path, swagger_paths_directory, dto_property_name, models_path)
-write_swagger_spec_file('fhir', 'swagger-spec.fhir.yaml', repo, sha, output_directory, swagger_template_path, swagger_paths_directory, dto_property_name, models_path)
+write_swagger_spec_file('hml', 'swagger-spec.hml.yaml')
+write_swagger_spec_file('fhir', 'swagger-spec.fhir.yaml')
