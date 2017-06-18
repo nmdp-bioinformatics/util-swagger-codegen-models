@@ -8,8 +8,6 @@ from os import walk
 import os
 import sys
 
-import pdb
-
 def get_sha_for_tag(repository, tag):
     branches = repository.get_branches()
     matched_branches = [match for match in branches if match.name == tag]
@@ -98,8 +96,6 @@ swagger_paths_directory = r'%s' % argv[5]
 swagger_template_path = r'%s' % argv[6]
 dto_property_name = argv[7]
 models_path = None
-
-pdb.set_trace()
 
 if len(argv) >= 9:
     models_path = r'%s' % argv[8]
