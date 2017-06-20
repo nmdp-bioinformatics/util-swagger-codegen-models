@@ -1,12 +1,12 @@
 from github import Github
 from github import GithubException
 
-from sys import argv
-
 from os import walk
 
 import os
 import sys
+import argparse
+
 
 def get_sha_for_tag(repository, tag):
     branches = repository.get_branches()
@@ -20,6 +20,17 @@ def get_sha_for_tag(repository, tag):
         raise ValueError('No Tag or Branch exists with that name')
 
     return matched_tags[0].commit.sha
+
+
+def walk_directory(dir):
+    template_files = []
+
+    for (dirpath, dirnames, filenames) in walk(dir):
+        for f in filenames:
+            with open(os.path.join(dirpath, f)) as reader:
+                template_files.append(reader.read())
+
+    return template_files
 
 
 def download_directory(repository, sha, server_path, template_files):
@@ -41,7 +52,7 @@ def download_directory(repository, sha, server_path, template_files):
                     file_data = file_content.decoded_content
                     template_files.append(file_data)
             except (GithubException, IOError) as exc:
-                sys.stderr.write('Error processing %s: %s', content.path, exc)
+                sys.stderr.write('Error processing %s: %s\n', content.path, exc)
 
 
 def write_swagger_spec_file(directory, swagger_file_name):
@@ -53,13 +64,13 @@ def write_swagger_spec_file(directory, swagger_file_name):
 
     if models_path == None:
         download_directory(repo, sha, 'model_definitions/%s' % directory, template_files)
-        for str_file in template_files:
-            for line in str_file.split('\n'):
-                if line and not line.isspace():
-                    definitions_yaml += '  ' + line + '\n'
     else:
-        with open(os.path.join(models_path, '%.txt' % directory)) as model_reader:
-            definitions_yaml = model_reader.read()
+        template_files = walk_directory(os.path.join(models_path, directory))
+
+    for str_file in template_files:
+        for line in str_file.split('\n'):
+            if line and not line.isspace():
+                definitions_yaml += '  ' + line + '\n'
 
     definitions_yaml += '\n\r'
 
@@ -88,17 +99,27 @@ def write_swagger_spec_file(directory, swagger_file_name):
 
 sys.stdout.write('Begin compiling swagger-spec.yaml')
 
-user_name = argv[1]
-password = argv[2]
-branch = argv[3]
-output_directory = r'%s' % argv[4]
-swagger_paths_directory = r'%s' % argv[5]
-swagger_template_path = r'%s' % argv[6]
-dto_property_name = argv[7]
-models_path = None
 
-if len(argv) >= 9:
-    models_path = r'%s' % argv[8]
+parser = argparse.ArgumentParser()
+parser.add_argument('-u')
+parser.add_argument('-p')
+parser.add_argument('-b')
+parser.add_argument('-o')
+parser.add_argument('-s')
+parser.add_argument('-t')
+parser.add_argument('-d')
+parser.add_argument('-m')
+
+args = parser.parse_args()
+
+user_name = args.u
+password = args.p
+branch = args.b
+output_directory = r'%s' % args.o
+swagger_paths_directory = r'%s' % args.s
+swagger_template_path = r'%s' % args.t
+dto_property_name = args.d
+models_path = r'%s' % args.m
 
 github = Github(user_name, password)
 repository_name = "util-swagger-codegen-models"
