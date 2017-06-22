@@ -75,4 +75,4 @@ packages = args.p.split(',')
 
 for package in packages:
     if package and not package.isspace():
-        write_swagger_spec_file(package, 'swagger-sepc.%s.yaml' % package)
+        write_swagger_spec_file(package, 'swagger-spec.%s.yaml' % package)
